@@ -1,0 +1,26 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 	@validarEst = Estacionamientos.find_by_sql("select * from Estacionamientos where DescrpEstac = '" + @desc_est + "'")  \
+	if @ValidarEst.count == 0\
+\
+  	reg =  Estacionamientos.new(:DescrpEstac => @desc_est, :DirecEstac => @direc_est, :TelefEstac => @telefi_est, :DimenEstac => @dim_est, \
+				:DirecGMEstac => @gmdirec_est, :TipoEst => @cboTipo_est, :DistEstac => @cboDist_est, :PrecxHorEstac => @precio_est,\
+				:UbicEstac => @cboUbicacion_est, :FotoEstac => @img_est)\
+  	reg.save\
+\
+  			@mensaje = 'El estacionamiento se ha registrado correctamente' \
+\
+	else\
+\
+			@mensaje = 'El estacionamiento ya existe'\
+\
+	end\
+\
+		Rails.logger.debug("--------------> " + @mensaje)\
+\
+  	render "registrar"}
