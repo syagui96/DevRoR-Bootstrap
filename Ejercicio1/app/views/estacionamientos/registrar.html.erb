@@ -1,0 +1,162 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/barra_controlador/Inicio">Estaciona-T
+          </a>
+        <form class="navbar-center navbar-left">
+         <p><a class="btn btn-primary btn-lg" href="/barra_controlador/Buscar" role="button">Buscar ahora</a></p>
+
+       </form>
+      </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/barra_controlador/MiCuenta">Mi Cuenta</a></li>
+        <li><a href="/barra_controlador/Ayuda">Ayuda</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="modal-body">
+<%= form_for :reg_est, :url => {:controller => "estacionamientos", :action => "registrar_post"}, :method => :post, :html => { :class => "form-horizontal" , :id => "form_reg_est"}  do |f| %>
+
+<form>
+<h2>Registro de Estacionamientos</h2>
+<div class="modal-body">
+	<div class="row">
+			<div class="col-md-12">
+							<legend>Datos</legend>
+									</div>
+										<div class="col-md-6">
+											<form role="form">
+												<div class="form-group">
+												    <label for="desc_est">Descripción</label>
+													<input type="text" 
+														   class="form-control" 
+														   name="desc_est"
+														   placeholder="Introduce una breve Descripción"
+														 >
+												</div>
+												<div class="form-group">
+													<label for="direc_est">Dirección</label>
+													<input type="text" 
+														   class="form-control" 
+														   name="direc_est" 
+														   placeholder="eg: Jr. Pumacahua 223">
+												</div>
+												<div class="form-group">
+													<label for="telefi_est">Telefono Fijo</label>
+													<input type="text" 
+														   class="form-control" 
+														   name="telefi_est" 
+														   onKeyPress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+														   placeholder="eg: 4704535">
+												</div>
+												<div class="form-group">
+													<label for="dim_est">Dimensiones</label>
+													<input type="text" 
+														   class="form-control" 
+														   name="dim_est"
+														   onKeyPress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" 
+														   placeholder="eg: 100x100">
+												</div>
+												<div class="form-group">
+													<label for="dim_est">Direccion Google Maps</label>
+													<input type="text" 
+														   class="form-control" 
+														   name="gmdirec_est" 
+														   placeholder="eg: http://gmaps.com">
+												</div>
+											</form>
+										</div>
+
+												<div class="col-md-6">
+												<div class="form-group">
+													<label for="tip_est">Tipo de Estacionamiento</label>
+													<style>
+														select:invalid { color: gray; }
+													</style>
+													<select class="form-control" type="text" name="cboTipo_est">
+														<option value="" disabled selected hidden>Seleccione tipo</option>
+														<option value="Interior">Interior</option>
+														<option value="Exterior">Exterior</option>
+														<option value="Otro">Otro</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<label for="tip_est">Distrito</label>
+													<style>
+														select:invalid { color: gray; }
+													</style>
+													<select class="form-control" type="text" name="cboDist_est">
+														<option value="" disabled selected hidden>Seleccione Distrito</option>
+														<option value="Lince">Lince</option>
+														<option value="San Miguel">San Miguel</option>
+														<option value="Miraflores">Miraflores</option>
+														<option value="San Isidro">San Isidro</option>
+														<option value="La Molina">La Molina</option>
+														<option value="Surco">Surco</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<label for="precio_est">Precio por Hora</label>
+													<input type="double" 
+														   class="form-control" 
+														   name="precio_est"
+														   onKeyPress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+														   placeholder="Ingrese solo numero">
+												</div>
+												<div class="form-group">
+														<label for="cboUbicacion_est">Ubicacion</label>
+														<style>
+															select:invalid { color: gray; }
+														</style>
+														<select class="form-control" type="text" name="cboUbicacion_est">
+															<option value="" disabled selected hidden>Seleccione Ubicacion</option>
+															<option value="Interior">Interior</option>
+															<option value="Exterior">Exterior</option>
+															<option value="Azotea">Azotea</option>
+															<option value="Sotano">Sotano</option>
+															<option value="Otro">Otro</option>
+														</select>
+												</div>
+												<div class="form-group">
+												    <label for="exampleInputFile">Adjuntar Imagen</label>
+												    <input type="file" name="img_est">
+												    <p class="help-block">Imagen 10mb max</p>
+												  </div>
+											</div>
+										</div>
+									<div class="col-sm-2">
+							      	<input type="submit" value="Guardar"/>
+							    	</div>
+</div>
+</form>
+<%end%>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">
+	</div>
+	<div class="col-sm-4">
+		<form class="navbar-center navbar-left">
+         <p><a class="btn btn-primary btn-lg" href="/estacionamientos/buscar" role="button">Buscar registrados</a></p>
+       </form>
+	</div>
+	<div class="col-sm-4">
+		<form class="navbar-center navbar-left">
+         <p><a class="btn btn-primary btn-lg" href="/servicios/registrar" role="button">Servicios Adicionales</a></p>
+       </form>
+	</div>
+</div>
+
+<div class="alert alert-success" role="alert"><%= @mensaje %></div>
+

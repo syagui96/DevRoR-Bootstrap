@@ -1,0 +1,85 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/barra_controlador/Inicio">Estaciona-T
+          </a>
+        <form class="navbar-center navbar-left">
+         <p><a class="btn btn-primary btn-lg" href="/barra_controlador/Buscar" role="button">Buscar ahora</a></p>
+
+       </form>
+      </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/barra_controlador/MiCuenta">Mi Cuenta</a></li>
+        <li><a href="/barra_controlador/Ayuda">Ayuda</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="modal-body">
+<%= form_for :reg_servicios, :url => {:controller => "servicios", :action => "registrar_post"}, :method => :post, :html => { :class => "form-horizontal" , :id => "form_reg_servicios"}  do |f| %>
+
+<form>
+<h2>Registro de Servicios Adicionales</h2>
+<div class="modal-body">
+	<div class="row">
+			<div class="col-md-12">
+							<legend>Datos</legend>
+									</div>
+										<div class="col-md-6">
+											<form role="form">
+												<div class="form-group">
+													<label for="tip_serv">Tipo de Servicio</label>
+													<style>
+														select:invalid { color: gray; }
+													</style>
+													<select class="form-control" type="text" name="cboTipo_serv">
+														<option value="" disabled selected hidden>Seleccione tipo de Servicio</option>
+														<option value="Lavado de carroceria">Lavado de carroceria</option>
+														<option value="Inflado de llantas y presion">Inflado de llantas y presion</option>
+														<option value="Undercoating">Undercoating</option>
+														<option value="Aspirado de alfombras">Aspirado de alfombras</option>
+														<option value="Pintado">Pintado</option>
+													</select>
+												</div>
+												<div class="form-group">
+												    <label for="desc_serv">Descripción</label>
+													<input type="text" 
+														   class="form-control" 
+														   name="desc_serv"
+														   placeholder="Introduce una breve Descripción"
+														 >
+												</div>
+												<div class="form-group">
+													<label for="tarif_est">Tarifa</label>
+													<input type="text" 
+														   class="form-control" 
+														   name="tarif_est"
+														   onKeyPress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" 
+														   placeholder="eg: 50">
+												</div>
+											</form>
+										</div>
+
+											<div class="col-md-6">
+											</div>
+										</div>
+									<div class="col-sm-2">
+							      	<input type="submit" value="Guardar"/>
+							    	</div>
+</div>
+</form>
+<%end%>
+</div>
+
+
+	<div class="alert alert-success" role="alert"><%= @mensaje %></div>

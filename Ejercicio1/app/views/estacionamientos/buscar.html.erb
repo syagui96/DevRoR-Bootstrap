@@ -1,0 +1,116 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/barra_controlador/Inicio">Estaciona-T
+          </a>
+        <form class="navbar-center navbar-left">
+         <p><a class="btn btn-primary btn-lg" href="/barra_controlador/Buscar" role="button">Buscar ahora</a></p>
+
+       </form>
+      </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/barra_controlador/MiCuenta">Mi Cuenta</a></li>
+        <li><a href="/barra_controlador/Ayuda">Ayuda</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="modal-body">
+<h3>Buscar registro de estacionamientos<h3>
+<%= form_for :buscar_est, :url => {:controller => "estacionamientos", :action => "buscar_get"}, :method => :get, :html => { :class => "form-horizontal" , :id => "form_buscar_est"}  do |f| %>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+				    <label for="tip_est">Tipo de Estacionamiento</label>
+					<style>
+						select:invalid { color: gray; }
+					</style>
+					<select class="form-control" type="text" name="cboTipo_estb">
+							<option value="nil" disabled selected hidden>Seleccione tipo</option>
+							<option value="Interior">Interior</option>
+							<option value="Exterior">Exterior</option>
+							<option value="Otro">Otro</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="tip_est">Distrito</label>
+					<style>
+						select:invalid { color: gray; }
+					</style>
+					<select class="form-control" type="text" name="cboDist_estb">
+							<option value="nil" disabled selected hidden>Seleccione Distrito</option>
+							<option value="Lince">Lince</option>
+							<option value="San Miguel">San Miguel</option>
+							<option value="Miraflores">Miraflores</option>
+							<option value="San Isidro">San Isidro</option>
+							<option value="La Molina">La Molina</option>
+							<option value="Surco">Surco</option>
+					</select>
+				</div>
+			</div>	
+			<div class="col-md-4">
+					<div class="form-group">
+						<label for="cboUbicacion_est">Ubicacion</label>
+						<style>
+							select:invalid { color: gray; }
+						</style>
+						<select class="form-control" type="text" name="cboUbicacion_estb">
+								<option value="nil" disabled selected hidden>Seleccione Ubicacion</option>
+								<option value="Interior">Interior</option>
+								<option value="Exterior">Exterior</option>
+								<option value="Azotea">Azotea</option>
+								<option value="Sotano">Sotano</option>
+								<option value="Otro">Otro</option>
+						</select>
+					</div>
+			   	  </div>
+			 <div class="col-md-4">
+			  			<button type="submit" class="btn btn-default">Buscar</button>
+			</div>
+		</div>
+	</div>
+<%end%>
+</div>
+
+<table class="table table-striped table-bordered table-hover dataTables-example" id="tablaEstac">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Descripción</th>
+			<th>Direccion</th>
+			<th>Tipo</th>
+			<th>Distrito</th>
+			<th>Precio</th>
+			<th>Ubicación</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% if @estac != nil && @estac != ""
+			@estac.each do |p| %>
+		<tr class="gradeU">
+			<td><%=p.IdEstac%></td>
+			<td><%=p.DescrpEstac%></td>
+			<td><%=p.DirecEstac%></td>
+			<td><%=p.TipoEst%></td>
+			<td><%=p.DistEstac%></td>
+			<td><%=p.PrecxHorEstac%></td>
+			<td><%=p.UbicEstac%></td>
+		</tr>
+		<% end end %>
+	</tbody>
+</table>
+
